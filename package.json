@@ -1,0 +1,28 @@
+{
+  "name": "sdc-products-api",
+  "version": "0.0.1",
+  "description": "Product API for the system design capstone project at HackReactor.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Peaceful-Pistachio/Products-API.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Peaceful-Pistachio/Products-API/issues"
+  },
+  "homepage": "https://github.com/Peaceful-Pistachio/Products-API#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15",
+    "supertest": "^6.2.0"
+  }
+}
