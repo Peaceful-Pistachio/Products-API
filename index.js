@@ -13,6 +13,13 @@ app.use('/products', productRouter);
 app.use(express.json());
 app.use(cors());
 
+//Not Found Middleware
+app.use((req, res, next) => {
+  const err = new Error('Not Found');
+  err.status = 404;
+  next(err);
+});
+
 //Basic Routes for Testing
 app.get('/hello-world', (req, res) => {
   res.json({message: 'Hello World!'})
