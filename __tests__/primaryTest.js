@@ -18,4 +18,16 @@ describe('Basic testing of tests and server:', () => {
   });
 });
 
+describe('Our basic product routes return status code 200', () => {
+  const urlArray = ['/products','/products/63609', '/products/63609', '/products/63609/styles'];
+
+  for (url of urlArray) {
+    it(`gets the '${url}' endpoint with status code 200`, async () => {
+      const response = await request
+      .get(url)
+      expect(response.status).toEqual(200);
+    });
+  }
+});
+
 testServer.close();
