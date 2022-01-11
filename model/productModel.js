@@ -1,7 +1,9 @@
 const mongoose = require('mongoose');
+const { Schema } = mongoose;
 
-const ProductSchema = new.mongoose.Schema({
-  product_id: { type: Number, index: true },
+const ProductSchema = new Schema({
+  _id: { type: Number, index: true, unique: true },
+  product_id: Number,
   name: String,
   slogan: String,
   description: String,
@@ -13,7 +15,7 @@ const ProductSchema = new.mongoose.Schema({
   }],
   related_products: [Number],
   styles: [{
-    style_id: Number,
+    style_id: { type: Number, unique: true },
     name: String,
     original_price: Number,
     sale_price: Number,
@@ -22,9 +24,7 @@ const ProductSchema = new.mongoose.Schema({
       thumbnail_url: String,
       url: String
     }],
-    skus: [{
-        SKUNumber: { quantity: Number, size: String }
-      }]
+    skus: [{ sku: { type: Number, unique: true },quantity: Number, size: String }]
   }]
 });
 
