@@ -1,8 +1,8 @@
-const app = require('../index.js');
-let server = app.listen(3000);
+const server = require('../index.js');
+let testServer = server.app.listen(server.port);
 
 const supertest = require('supertest');
-const request = supertest(server);
+const request = supertest(testServer);
 
 describe('Basic testing of tests and server:', () => {
 
@@ -15,8 +15,7 @@ describe('Basic testing of tests and server:', () => {
     .get('/hello-world')
     expect(response.status).toEqual(200);
     expect(response.body.message).toEqual('Hello World!');
-  })
-
+  });
 });
 
-server.close();
+testServer.close();
