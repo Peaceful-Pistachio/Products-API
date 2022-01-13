@@ -4,7 +4,7 @@
   "description": "Product API for the system design capstone project at HackReactor.",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --detectOpenHandles",
     "start": "nodemon server.js"
   },
   "repository": {

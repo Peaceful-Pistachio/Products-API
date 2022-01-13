@@ -1,24 +1,40 @@
 const express = require('express');
 var router = express.Router()
+const Product = require('../model/productService');
 
 //Basic Routes
 router.get('/', (req, res) => {
   let page = req.params.page || 1;
   let count = req.params.count || 5;
-  res.status(200).send(`Here are ${count} products from page ${page}`);
+  Product.getSomeProducts(page, count, (data) => {
+    res.status(200).send(data);
+  });
 });
 
 router.get('/:product_id', (req, res) => {
-  res.status(200).send(`Here are some products for product #${req.params.product_id}`);
+  Product.getSpecificProduct(req.params.product_id, (data) => {
+    res.status(200).send(data);
+  });
 });
 
 router.get('/:product_id/styles', (req, res) => {
-  res.status(200).send(`Here are some styles for product #${req.params.product_id}`);
+  Product.getProductStyles(req.params.product_id, (data) => {
+    res.status(200).send(data);
+  });
 });
 
 router.get('/:product_id/related', (req, res) => {
-  res.status(200).send(`Here are some related products for products #${req.params.product_id}`);
+  Product.getRelatedProducts(req.params.product_id, (data) => {
+    res.status(200).send(data);
+  });
 });
+
+router.get('/search/:search_term', (req, res) => {
+  Product.searchForProduct(req.params.search_term, (data) => {
+    res.status(200).send(data);
+  });
+});
+
 
 //Helper Functions
 const sendNoProductError = (product_id) => {

@@ -1,21 +1,24 @@
 const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost:27017/Products-API');
+
 const { Schema } = mongoose;
 
 const ProductSchema = new Schema({
-  _id: { type: Number, index: true, unique: true },
-  product_id: Number,
+  product_id: { type: Number, index: true, unique: true },
   name: String,
   slogan: String,
   description: String,
   category: String,
   default_price: Number,
   features: [{
+    id: Number,
     feature: String,
     value: String
   }],
   related_products: [Number],
   styles: [{
-    style_id: { type: Number, unique: true },
+    id: { type: Number, unique: true },
+    productId: Number,
     name: String,
     original_price: Number,
     sale_price: Number,
@@ -24,7 +27,7 @@ const ProductSchema = new Schema({
       thumbnail_url: String,
       url: String
     }],
-    skus: [{ sku: { type: Number, unique: true },quantity: Number, size: String }]
+    skus: [{ id: { type: Number, unique: true }, styleId: Number, quantity: Number, size: String }]
   }]
 });
 

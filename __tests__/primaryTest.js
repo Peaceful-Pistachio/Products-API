@@ -2,6 +2,7 @@ const server = require('../index.js');
 let testServer = server.app.listen(server.port);
 
 const supertest = require('supertest');
+const { Mongoose } = require('mongoose');
 const request = supertest(testServer);
 
 describe('Basic testing of tests and server:', () => {
@@ -19,7 +20,7 @@ describe('Basic testing of tests and server:', () => {
 });
 
 describe('Our basic product routes return status code 200', () => {
-  const urlArray = ['/products','/products/63609', '/products/63609', '/products/63609/styles'];
+  const urlArray = ['/products','/products/1', '/products/1/related', '/products/1/styles'];
 
   for (url of urlArray) {
     it(`gets the '${url}' endpoint with status code 200`, async () => {
@@ -30,4 +31,5 @@ describe('Our basic product routes return status code 200', () => {
   }
 });
 
+mongoose.connection.close();
 testServer.close();
