@@ -4,6 +4,8 @@ const Product = require('../model/productService');
 
 //Basic Routes
 router.get('/', (req, res) => {
+  let page = req.query.page || 1;
+  let count = req.query.count || 5;
   Product.getSomeProducts(page, count, (data) => {
     res.status(200).send(data);
   });
