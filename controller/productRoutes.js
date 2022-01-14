@@ -4,8 +4,6 @@ const Product = require('../model/productService');
 
 //Basic Routes
 router.get('/', (req, res) => {
-  let page = req.params.page || 1;
-  let count = req.params.count || 5;
   Product.getSomeProducts(page, count, (data) => {
     res.status(200).send(data);
   });
@@ -44,5 +42,6 @@ const sendNoProductError = (product_id) => {
 //Router Export
 module.exports = router;
 
+// loaderio-c5db147d8d708c6f1a49a8f1b54a21e0
 
 
