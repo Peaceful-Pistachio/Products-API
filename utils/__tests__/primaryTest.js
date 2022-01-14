@@ -1,9 +1,9 @@
-const server = require('../index.js');
+const server = require('../../index.js');
 let testServer = server.app.listen(3001);
-
 const supertest = require('supertest');
-const { Mongoose } = require('mongoose');
 const request = supertest(testServer);
+const db = require('../../model/productModel');
+
 
 describe('Basic testing of tests and server:', () => {
 
@@ -31,5 +31,27 @@ describe('Our basic product routes return status code 200', () => {
   }
 });
 
-mongoose.connection.close();
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+describe('Should return products for any product id between 1 and 1000011', () => {
+
+  let urlArray = [];
+
+  for (let i = 0; i < 5; i++) {
+    urlArray.push('/products/' + getRandomInt(1,1000011).toString());
+  }
+
+  for (url of urlArray) {
+    it(`gets the '${url}' endpoint with status code 200`, async () => {
+      const response = await request
+      .get(url)
+      expect(response.status).toEqual(200);
+    });
+  }
+});
+
 testServer.close();
