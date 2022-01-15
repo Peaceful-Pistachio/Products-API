@@ -4,7 +4,6 @@ const supertest = require('supertest');
 const request = supertest(testServer);
 const db = require('../../model/productModel');
 
-
 describe('Basic testing of tests and server:', () => {
 
   it('Testing to see if Jest works', () => {
@@ -38,13 +37,10 @@ function getRandomInt(min, max) {
 }
 
 describe('Should return products for any product id between 1 and 1000011', () => {
-
   let urlArray = [];
-
   for (let i = 0; i < 5; i++) {
     urlArray.push('/products/' + getRandomInt(1,1000011).toString());
   }
-
   for (url of urlArray) {
     it(`gets the '${url}' endpoint with status code 200`, async () => {
       const response = await request
