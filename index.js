@@ -40,8 +40,8 @@ app.get('/', (req, res) => {
   res.status(200).send(htmlMessage);
 });
 
-app.get('/loaderio-c5db147d8d708c6f1a49a8f1b54a21e0/', (req, res) => {
-  res.status(200).send('loaderio-c5db147d8d708c6f1a49a8f1b54a21e0');
+app.get('/loaderio-62eb49795287cb1a54d0601ab974003f/', (req, res) => {
+  res.status(200).send('loaderio-62eb49795287cb1a54d0601ab974003f');
 });
 
 //Not Found Middleware
