@@ -3,6 +3,13 @@ const { get } = require('express/lib/request');
 var router = express.Router()
 const Product = require('../model/productService');
 
+router.get('/test/', (req, res) => {
+  let num = getRandomInt(1,1000011);
+  Product.getSpecificProduct(num, (data) => {
+    res.status(200).send(data);
+  });
+});
+
 //Basic Routes
 router.get('/', (req, res) => {
   let page = req.query.page || 1;
@@ -42,11 +49,6 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-router.get('/test/', (req, res) => {
-  Product.getSpecificProduct(getRandomInt(1,1000011), (data) => {
-    res.status(200).send(data);
-  });
-});
 
 //Helper Functions
 const sendNoProductError = (product_id) => {
