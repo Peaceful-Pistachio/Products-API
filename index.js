@@ -1,4 +1,6 @@
 const express = require('express');
+const compression = require('compression')
+
 const app = express();
 const cors = require('cors');
 let port = process.env.PORT || 3000;
@@ -10,17 +12,16 @@ if (cluster.isMaster) {
   for (let i = 0; i < totalCPUs; i++) {
     cluster.fork();
   }
-
   cluster.on('exit', (worker, code, signal) => {
     cluster.fork();
   })
-
 } else {
 
   //Import Routes
   const productRouter = require('./controller/productRoutes');
 
   //Middleware Setup
+  app.use(compression())
   app.use('/products', productRouter);
   app.use(express.json());
   app.use(cors());

@@ -1,5 +1,5 @@
-const server = require('../../index.js');
-let testServer = server.app.listen(3001);
+const server = require('../testSetup');
+let testServer = server.listen(3001);
 const supertest = require('supertest');
 const request = supertest(testServer);
 const mongoose = require('mongoose');
