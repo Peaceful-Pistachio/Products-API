@@ -19,4 +19,4 @@ EXPOSE 3000
 EXPOSE 27017
 ENV MONGO_HOST "host.docker.internal"
 
-CMD [ "node", "server.js" ]
+CMD [ "node", "index.js" ]
