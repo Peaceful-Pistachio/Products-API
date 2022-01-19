@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://0.0.0.0:27017/Products-API');
+require('dotenv').config()
+let url = `mongodb://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}?authSource=admin&readPreference=primary`;
+mongoose.connect(url);
 
 const { Schema } = mongoose;
 

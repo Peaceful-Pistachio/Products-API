@@ -1,3 +1,4 @@
 node_modules
 .vscode
-.schemas
+schemas
+.env
