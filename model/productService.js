@@ -47,6 +47,7 @@ const getRelatedProducts = (product_id, cb) => {
 
 const searchForProduct = (search_text, cb) => {
   Product.find({ "name": { "$regex": search_text, "$options": "i" } }, '-_id product_id name description category default_price features.feature features.value')
+    .limit(5)
     .sort({ product_id: 'asc' })
     .exec((err, data) => {
       err ?

@@ -19,6 +19,12 @@ router.get('/', (req, res) => {
   });
 });
 
+router.get('/s', (req, res) => {
+  Product.searchForProduct(req.query.s, (data) => {
+    res.status(200).send(data);
+  });
+});
+
 router.get('/:product_id', (req, res) => {
   Product.getSpecificProduct(req.params.product_id, (data) => {
     res.status(200).send(data);
@@ -37,11 +43,7 @@ router.get('/:product_id/related', (req, res) => {
   });
 });
 
-router.get('/s/', (req, res) => {
-  Product.searchForProduct(req.query.search_term, (data) => {
-    res.status(200).send(data);
-  });
-});
+
 
 function getRandomInt(min, max) {
   min = Math.ceil(min);
