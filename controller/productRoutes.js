@@ -1,7 +1,12 @@
 const express = require('express');
-const { get } = require('express/lib/request');
 var router = express.Router()
 const Product = require('../model/productService');
+require('dotenv').config()
+
+const redis = require('redis');
+const redisClient = redis.createClient({url: `redis://:${process.env.REDIS_PASS}@${process.env.REDIS_URL}:6379`});
+
+redisClient.connect();
 
 router.get('/test/', (req, res) => {
   let num = getRandomInt(1,1000011);
@@ -19,10 +24,18 @@ router.get('/', (req, res) => {
   });
 });
 
-router.get('/s', (req, res) => {
-  Product.searchForProduct(req.query.s, (data) => {
-    res.status(200).send(data);
-  });
+router.get('/s',async (req, res) => {
+  let searchTerm = req.query.s;
+
+  let cached = await redisClient.get(searchTerm);
+  if (!cached) {
+    Product.searchForProduct(searchTerm, (data) => {
+      redisClient.setEx(searchTerm, 3600, JSON.stringify(data));
+      res.status(200).send(data);
+    });
+  } else {
+    res.status(200).send(JSON.parse(cached));
+  }
 });
 
 router.get('/:product_id', (req, res) => {
