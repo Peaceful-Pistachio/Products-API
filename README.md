@@ -1,7 +1,32 @@
-# Products-API
-Products API to serve Products to the client endpoint.
 
-Get first products from database; amount and page can be set using the following parameters:
+Following the completion of the [Front-End Capstone Project](https://github.com/courageous-cottonwood/front-end-capstone), our team was tasked with designing a backend system to serve data to that front end application through various REST API endpoints. 
+
+## Products API
+
+**Overview**: Served the individual product data and its various related components, including related items and individual styles. Further documentation can be found in the Products-API.
+
+**Technologies Used:** NodeJS, Express, MongoDB, Mongoose and Redis. 
+
+**Developed by:** [@seanpwelch90](https://github.com/seanpwelch90)
+
+## Docker
+
+To run the application using Docker, first clone the repository onto your local system, and build using the following command: 
+
+    docker build . -t your-image-name
+
+Then run the container using the following command: 
+
+    sudo docker run \
+	    -detached \
+	    --restart unless-stopped \
+	    -p 3000:3000
+	    -e DB_HOST=I \
+	    -e DB_USER= \
+	    -e DB_PASS= \
+	    -e REDIS_PASS= \
+	    -e REDIS_URL= \
+	    --name=your-image-name \
 
 ## GET Products
 
