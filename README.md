@@ -196,7 +196,7 @@ Yields the following data output:
 
 ## Search for Products by Name
 
-`/products/search/camo`
+`/products/s?s=camo`
 
 Yields the following data output: 
 
