@@ -1,11 +1,11 @@
 
-Following the completion of the [Front-End Capstone Project](https://github.com/courageous-cottonwood/front-end-capstone), our team was tasked with designing a backend system to serve data to that front end application through various REST API endpoints. 
+Following the completion of the [Front-End Capstone Project](https://github.com/courageous-cottonwood/front-end-capstone), our team was tasked with designing a backend system to serve dat for that front-end application through various REST API endpoints. 
 
 ## Products API
 
 **Overview**: Served the individual product data and its various related components, including related items and individual styles. Further documentation can be found in the Products-API.
 
-**Technologies Used:** NodeJS, Express, MongoDB, Mongoose and Redis. 
+**Technologies Used:** NodeJS, Express, MongoDB, Mongoose, Amazon EC2, and Redis. 
 
 **Developed by:** [@seanpwelch90](https://github.com/seanpwelch90)
 
