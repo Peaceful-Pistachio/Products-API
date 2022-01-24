@@ -21,7 +21,7 @@ Then run the container using the following command:
 	    -detached \
 	    --restart unless-stopped \
 	    -p 3000:3000
-	    -e DB_HOST=I \
+	    -e DB_HOST= \
 	    -e DB_USER= \
 	    -e DB_PASS= \
 	    -e REDIS_PASS= \
